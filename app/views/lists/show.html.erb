@@ -1,5 +1,5 @@
 <div class="list-title">
-    <h1><%= @list.name %></h1>
+    <h2><%= @list.name %> (<%= @list.movies.length %>)</h2>
     <%= link_to 'Add a film', new_list_bookmark_path(@list), class: "btn btn-flat"  %>
     <%= link_to 'Delete this list',
             list_path(@list.id),
@@ -8,19 +8,16 @@
             class: "btn btn-ghost"  %>
 </div>
 <div class="container">
-  <h1>List of movies (<%= @list.movies.length %>)</h1>
   <div class="cards">
     <% @list.movies.each do |movie| %>
       <div class="card">
         <div class="movie-info">
           <h2><%= movie.title %></h2>
-          <p>Rating: <%= movie.rating.round(1) %></p>
           <% bookmark = Bookmark.find_by(list_id: @list, movie_id: movie.id) %>
-          <%= link_to 'Delete this association',
+          <p>Rating: <%= movie.rating.round(1) %> - <%= link_to '<i class="bi bi-trash"></i>'.html_safe,
             bookmark_path(bookmark),
             method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "btn btn-ghost"  %>
+            data: { confirm: "Are you sure?" }  %></p>
         </div>
           <%= image_tag "#{movie.poster_url}", height: "300px" %>
       </div>
