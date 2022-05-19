@@ -1,0 +1,2 @@
+module BookmakersHelper
+end
