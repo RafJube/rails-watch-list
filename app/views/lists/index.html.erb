@@ -4,7 +4,7 @@
 </div>
 <div class="cards">
   <% @lists.each do |list| %>
-    <div class="card card-list">
+    <div class="card card-list" >
       <h2><%= list.name %></h2>
         <%#= image_tag "#", height: "300px" %>
         <%= link_to "Show the list", list_path(list) %>

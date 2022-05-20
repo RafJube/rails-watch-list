@@ -1,0 +1,10 @@
+<h2><%= @movie.title %></h2>
+<div class="movie-display">
+  <div class="movie-poster">
+    <%= image_tag "#{@movie.poster_url}", height: "600px" %>
+  </div>
+  <div class="movie-info">
+    <% bookmark = Bookmark.find_by(list_id: @list, movie_id: @movie.id) %>
+    <p>Rating: <%= @movie.rating.round(1) %></p>
+    <p><%= @movie.overview %></p>
+</div>

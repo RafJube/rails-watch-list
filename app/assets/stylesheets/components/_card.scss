@@ -5,16 +5,17 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   padding: 15px;
-  height: 350px;
   align-items: center;
   text-align: center;
   border: 1px solid lightgrey;
   border-radius: 3px;
   box-shadow: 2px 2px 4px grey;
   &:hover {
-    background-color: rgb(240, 240, 240);
+    //background-color: rgb(240, 240, 240);
   }
   .movie-info {
     height: 100px;
@@ -23,21 +24,44 @@
     justify-content: space-between;
 
   }
+
   h2 {
-    font-size: 24px;;
+    font-size: 24px;
   }
 
-  img {
-  height: 200px;
-  object-fit: cover;
+  .movie-poster {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .movie-comment {
+    margin-top: 10px;
+    width: 200px;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid grey;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: grey;
+    }
   }
 }
 
 .card-list {
+  color: white;
   height: 150px;
   justify-content: center;
+  background: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url("http://unsplash.it/300/200/?random");
+  a {
+    color: white;
+  }
 }
-
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

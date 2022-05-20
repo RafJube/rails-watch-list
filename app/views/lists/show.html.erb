@@ -12,14 +12,19 @@
     <% @list.movies.each do |movie| %>
       <div class="card">
         <div class="movie-info">
-          <h2><%= movie.title %></h2>
+          <h2><%= link_to movie.title, movie_path(movie) %></h2>
           <% bookmark = Bookmark.find_by(list_id: @list, movie_id: movie.id) %>
           <p>Rating: <%= movie.rating.round(1) %> - <%= link_to '<i class="bi bi-trash"></i>'.html_safe,
             bookmark_path(bookmark),
             method: :delete,
             data: { confirm: "Are you sure?" }  %></p>
         </div>
+        <div class="movie-poster">
           <%= image_tag "#{movie.poster_url}", height: "300px" %>
+        </div>
+        <div class="movie-comment">
+          <%= bookmark.comment %>
+        </div>
       </div>
     <% end %>
   </div>
