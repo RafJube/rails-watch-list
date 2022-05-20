@@ -1,13 +1,26 @@
-<div class="list-title">
-  <h2>My Lists</h2>
-  <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url(<%= asset_path('shanghai.jpg') %>)">
+  <div class="container">
+    <h1>Welcome to my movies' lists</h1>
+    <p>Create and update a list of movies</p>
+  </div>
 </div>
-<div class="cards">
-  <% @lists.each do |list| %>
-    <div class="card card-list" >
-      <h2><%= list.name %></h2>
-        <%#= image_tag "#", height: "300px" %>
-        <%= link_to "Show the list", list_path(list) %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="list-title">
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+  </div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <% if list.photo.attached? %>
+        <div class="card card-list" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url('<%= cl_image_path list.photo.key, crop: :fill %>')">
+          <h2><%= list.name %></h2>
+          <%= link_to "Show the list", list_path(list) %>
+        </div>
+        <% else %>
+          <div class="card card-list" style="background-color: grey">
+            <h2><%= list.name %></h2>
+            <%= link_to "Show the list", list_path(list) %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

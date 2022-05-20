@@ -1,10 +1,16 @@
-<h2><%= @movie.title %></h2>
-<div class="movie-display">
-  <div class="movie-poster">
-    <%= image_tag "#{@movie.poster_url}", height: "600px" %>
-  </div>
-  <div class="movie-info">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url(<%= asset_path('shanghai.jpg') %>)">
+  <div class="container">
+    <h1><%= @movie.title %></h1>
     <% bookmark = Bookmark.find_by(list_id: @list, movie_id: @movie.id) %>
     <p>Rating: <%= @movie.rating.round(1) %></p>
-    <p><%= @movie.overview %></p>
+  </div>
+</div>
+<div class="container">
+  <div class="movie-display">
+    <div class="movie-poster">
+      <%= image_tag "#{@movie.poster_url}", height: "600px" %>
+    </div>
+    <div class="movie-info">
+      <p><%= @movie.overview %></p>
+  </div>
 </div>

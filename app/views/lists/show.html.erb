@@ -1,13 +1,21 @@
-<div class="list-title">
-    <h2><%= @list.name %> (<%= @list.movies.length %>)</h2>
-    <%= link_to 'Add a film', new_list_bookmark_path(@list), class: "btn btn-flat"  %>
-    <%= link_to 'Delete this list',
-            list_path(@list.id),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "btn btn-ghost"  %>
-</div>
+<% if @list.photo.attached? %>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url('<%= cl_image_path @list.photo.key, crop: :fill %>')">
+<% else %>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url(<%= asset_path('shanghai.jpg') %>)">
+<% end %>
+    <div class="container">
+      <h1><%= @list.name %> (<%= @list.movies.length %>)</h1>
+    </div>
+  </div>
 <div class="container">
+  <div class="list-title">
+      <%= link_to 'Add a film', new_list_bookmark_path(@list), class: "btn btn-flat"  %>
+      <%= link_to 'Delete this list',
+              list_path(@list.id),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "btn btn-ghost"  %>
+  </div>
   <div class="cards">
     <% @list.movies.each do |movie| %>
       <div class="card">

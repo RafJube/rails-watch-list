@@ -1,15 +1,23 @@
-<h2>List of movies (<%= @movies.length %>)</h2>
-<div class="cards">
-  <% @movies.each do |movie| %>
-    <div class="card">
-      <div class="movie-info">
-        <h2><%= movie.title %></h2>
-        <p>Rating: <%= movie.rating.round(1) %></p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url(<%= asset_path('shanghai.jpg') %>)">
+  <div class="container">
+    <h1>Welcome to your movies' lists</h1>
+    <p>Create and update a list of movies</p>
+  </div>
+</div>
+<div class="container">
+  <h2>List of movies (<%= @movies.length %>)</h2>
+  <div class="cards">
+    <% @movies.each do |movie| %>
+      <div class="card">
+        <div class="movie-info">
+          <h2><%= movie.title %></h2>
+          <p>Rating: <%= movie.rating.round(1) %></p>
+        </div>
+          <%= image_tag "#{movie.poster_url}", height: "300px" %>
+        <div class="movie-link">
+          <%#= link_to 'More info', movie_path(movie) %>
+        </div>
       </div>
-        <%= image_tag "#{movie.poster_url}", height: "300px" %>
-      <div class="movie-link">
-        <%#= link_to 'More info', movie_path(movie) %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

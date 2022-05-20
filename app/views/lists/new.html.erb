@@ -1,5 +1,12 @@
-<h2>New list</h2>
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit "Create a new list", class: "btn btn-flat" %>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url(<%= asset_path('shanghai.jpg') %>)">
+  <div class="container">
+    <h1>New list</h1>
+  </div>
+</div>
+<div class="container">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Create a new list", class: "btn btn-flat" %>
+  <% end %>
+</div>
